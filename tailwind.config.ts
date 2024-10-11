@@ -80,10 +80,9 @@ const config: Config = {
           "0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03)",
         creditCard: "8px 10px 16px 0px rgba(0, 0, 0, 0.05)",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        geistSans: "var(--font-geist-sans)",
+        geistMono: "var(--font-geist-mono)",
       },
       keyframes: {
         "accordion-down": {
