@@ -117,3 +117,9 @@ export interface FooterProps {
   user: User;
   type?: "mobile" | "desktop";
 }
+
+export interface PlaidLinkProps {
+  user: User;
+  variant?: "primary" | "ghost";
+  dwollaCustomerId?: string;
+}
