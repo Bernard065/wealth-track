@@ -7,7 +7,7 @@ import {
   usePlaidLink,
 } from "react-plaid-link";
 import { useRouter } from "next/navigation";
-import { createLinkToken } from "@/lib/actions/user.actions";
+import { createLinkToken, exchangePublicToken } from "@/lib/actions/user.actions";
 
 
 const PlaidLInk = ({ user, variant }: PlaidLinkProps) => {
