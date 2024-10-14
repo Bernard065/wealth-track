@@ -9,8 +9,8 @@ export interface User {
   $id: string;
   email: string;
   userId: string;
-  dwollaCustomerUrl?: string;
-  dwollaCustomerId?: string;
+  dwollaCustomerUrl: string;
+  dwollaCustomerId: string;
   firstName: string;
   lastName: string;
   name: string;
@@ -93,4 +93,27 @@ export interface CreditCardProps {
   account: Account;
   userName: string;
   showBalance?: boolean;
+}
+
+export interface SignUpParams {
+  firstName?: string;
+  lastName?: string;
+  address1?: string;
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  dateOfBirth?: string;
+  ssn?: string;
+  email: string;
+  password: string;
+}
+
+export interface signInProps {
+  email: string;
+  password: string;
+}
+
+export interface FooterProps {
+  user: User;
+  type?: "mobile" | "desktop";
 }

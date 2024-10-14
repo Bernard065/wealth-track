@@ -75,3 +75,5 @@ export const authFormSchema = (type: string) =>
       .string()
       .min(8, { message: "Password must be at least 8 characters" }),
   });
+
+export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value))
