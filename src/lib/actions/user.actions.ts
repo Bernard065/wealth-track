@@ -1,10 +1,12 @@
 "use server";
 
-import { signInProps, SignUpParams } from "@/types";
+import { signInProps, SignUpParams, User } from "@/types";
 import { createAdminClient, createSessionClient } from "../server/appwrite";
 import { cookies } from "next/headers";
 import { ID } from "node-appwrite";
 import { parseStringify } from "../utils";
+import { CountryCode, Products } from "plaid";
+import { plaidClient } from "../plaid";
 
 export const signIn = async ({ email, password }: signInProps) => {
   try {
@@ -69,3 +71,23 @@ export async function logoutUser() {
     return null;
   }
 }
+
+export const createLinkToken = async (user: User) => {
+  try {
+    const tokenParams = {
+      user: {
+        client_user_id: user.$id
+      },
+      client_name: user.name,
+      products: ['auth'] as Products[],
+      language: 'en',
+      country_codes: ['US'] as CountryCode[],
+    }
+
+    const response = await plaidClient.linkTokenCreate(tokenParams);
+
+    return parseStringify({ linkToken: response.data.link_token })
+  } catch (error) {
+    console.error("Error", error);
+  }
+};

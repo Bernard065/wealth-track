@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import CustomForm from "./CustomForm";
+import PlaidLInk from "../shared/PlaidLInk";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
@@ -33,7 +34,10 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
 
       {user ? (
-        <div className="flex flex-col gap-4">{/* PlaidLink */}</div>
+        <div className="flex flex-col gap-4">
+          {/* PlaidLink */}
+          <PlaidLInk user={user} variant="primary" />
+        </div>
       ) : (
         <>
           <CustomForm type={type} setUser={setUser} />
