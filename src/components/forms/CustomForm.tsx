@@ -13,6 +13,7 @@ import CustomInput from "./CustomInput";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signIn, signUp } from "@/lib/actions/user.actions";
 
 type CustomFormProps = {
   type: string;

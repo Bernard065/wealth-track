@@ -1,17 +1,22 @@
 import MobileNav from "@/components/shared/MobileNav";
 import Sidebar from "@/components/shared/Sidebar";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import React from "react";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const loggeIn = { firstName: "Bernard", lastName: "Omboga" };
+  const loggedIn = await getLoggedInUser();
+
+  if (!loggedIn) redirect("/sign-in");
+
   return (
     <main className="flex h-screen w-full font-geistSans">
-      <Sidebar />
+      <Sidebar user={loggedIn} />
 
       <div className="flex size-full flex-col">
         <div className="root-layout">
@@ -22,7 +27,7 @@ export default function RootLayout({
             alt="menu-logo"
           />
           <div>
-            <MobileNav user={loggeIn} />
+            <MobileNav user={loggedIn} />
           </div>
         </div>
         {children}
