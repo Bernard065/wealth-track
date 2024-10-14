@@ -3,7 +3,11 @@ import RightSidebar from "@/components/shared/RightSidebar";
 import TotalBalanceBox from "@/components/shared/TotalBalanceBox";
 
 export default function Home() {
-  const loggedIn = { firstName: "Bernard", lastName: "Omboga" };
+  const loggedIn = {
+    firstName: "Bernard",
+    lastName: "Omboga",
+    email: "bebenibernard@gmail.com",
+  };
 
   return (
     <section className="home">
@@ -26,7 +30,11 @@ export default function Home() {
         {/* TODO:RECENT TRANSACTIONS */}
       </div>
 
-      <RightSidebar user={loggedIn} transactions={[]} banks={[]} />
+      <RightSidebar
+        user={loggedIn}
+        transactions={[]}
+        banks={[{ currentBalance: 100.5 }, { currentBalance: 500.5 }]}
+      />
     </section>
   );
 }
