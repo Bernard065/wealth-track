@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import CustomForm from "./CustomForm";
-import PlaidLInk from "../shared/PlaidLInk";
+import PlaidLInk from "../shared/PlaidLink";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
