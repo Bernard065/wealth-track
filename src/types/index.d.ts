@@ -169,3 +169,7 @@ export interface CreateFundingSourceOptions {
   plaidToken: string; // Plaid Account Processor Token
   _links: object; // Dwolla On Demand Authorization Link
 }
+
+export interface getUserInfoProps {
+  userId: string;
+}
