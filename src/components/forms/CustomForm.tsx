@@ -75,6 +75,11 @@ const CustomForm = ({ type, setUser }: CustomFormProps) => {
     }
   };
 
+  const handleNavigation = () => {
+    // Programmatic navigation to prevent passing form type via URL
+    router.push(type === "sign-in" ? "/sign-up" : "/sign-in");
+  };
+
   return (
     <>
       <Form {...form}>
@@ -112,7 +117,7 @@ const CustomForm = ({ type, setUser }: CustomFormProps) => {
                   control={form.control}
                   name="state"
                   label="State"
-                  placeholder="Enter your state"
+                  placeholder="NY"
                 />
                 <CustomInput
                   control={form.control}
@@ -175,12 +180,9 @@ const CustomForm = ({ type, setUser }: CustomFormProps) => {
             ? "Don't have an account?"
             : "Already have an account?"}
         </p>
-        <Link
-          href={type === "sign-in" ? "/sign-up" : "/sign-in"}
-          className="form-link"
-        >
+        <button onClick={handleNavigation} className="form-link">
           {type === "sign-in" ? "Sign Up" : "Sign In"}
-        </Link>
+        </button>
       </footer>
     </>
   );
