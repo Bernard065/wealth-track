@@ -173,3 +173,32 @@ export interface CreateFundingSourceOptions {
 export interface getUserInfoProps {
   userId: string;
 }
+
+export interface getAccountProps {
+  appwriteItemId: string;
+}
+
+export interface getAccountsProps {
+  userId: string;
+}
+
+export interface getInstitutionProps {
+  institutionId: string;
+}
+
+export interface getTransactionsProps {
+  accessToken: string;
+}
+
+export interface getBanksProps {
+  userId: string;
+}
+
+export interface getBankProps {
+  documentId: string;
+}
+
+export interface SearchParamProps {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
