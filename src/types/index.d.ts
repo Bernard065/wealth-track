@@ -202,3 +202,38 @@ export interface SearchParamProps {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
+
+export interface RecentTransactionsProps {
+  accounts: Account[];
+  transactions: Transaction[];
+  appwriteItemId: string;
+  page: number;
+}
+
+export interface BankTabItemProps {
+  account: Account;
+  appwriteItemId?: string;
+}
+
+export interface UrlQueryParams {
+  params: string;
+  key: string;
+  value: string;
+}
+
+export type AccountTypes =
+  | "depository"
+  | "credit"
+  | "loan "
+  | "investment"
+  | "other";
+
+export interface BankInfoProps {
+  account: Account;
+  appwriteItemId?: string;
+  type: "full" | "card";
+}
+
+export interface TransactionTableProps {
+  transactions: Transaction[];
+}

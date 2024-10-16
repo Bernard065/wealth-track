@@ -1,4 +1,5 @@
 import Header from "@/components/shared/Header";
+import RecentTransactions from "@/components/shared/RecentTransactions";
 import RightSidebar from "@/components/shared/RightSidebar";
 import TotalBalanceBox from "@/components/shared/TotalBalanceBox";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
@@ -7,6 +8,8 @@ import { SearchParamProps } from "@/types";
 import { redirect } from "next/navigation";
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
+  const currentPage = Number(page as string) || 1;
+
   const loggedIn = await getLoggedInUser();
 
   if (!loggedIn) redirect("/sign-in");
@@ -45,7 +48,13 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           />
         </header>
 
-        {/* TODO:RECENT TRANSACTIONS */}
+        {/* RECENT TRANSACTIONS */}
+        <RecentTransactions
+          accounts={accountsData}
+          transactions={account?.transactions}
+          appwriteItemId={appwriteItemId}
+          page={currentPage}
+        />
       </div>
 
       <RightSidebar
