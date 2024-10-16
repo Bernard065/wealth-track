@@ -8,7 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatAmount, getTransactionStatus } from "@/lib/utils";
+import {
+  formatAmount,
+  getTransactionStatus,
+  removeSpecialCharacters,
+} from "@/lib/utils";
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
   return (
@@ -35,7 +39,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           return (
             <TableRow key={transaction.id}>
               <TableCell>
-                <h1>{transaction.name}</h1>
+                <h1>{removeSpecialCharacters(transaction.name)}</h1>
               </TableCell>
             </TableRow>
           );

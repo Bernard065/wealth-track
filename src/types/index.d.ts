@@ -237,3 +237,17 @@ export interface BankInfoProps {
 export interface TransactionTableProps {
   transactions: Transaction[];
 }
+
+export interface CreateTransactionProps {
+  name: string;
+  amount: string;
+  senderId: string;
+  senderBankId: string;
+  receiverId: string;
+  receiverBankId: string;
+  email: string;
+}
+
+export interface getTransactionsByBankIdProps {
+  bankId: string;
+}
