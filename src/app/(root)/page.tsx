@@ -23,7 +23,13 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
   const account = await getAccount({ appwriteItemId });
 
-  console.log("Data", { accountsData, account });
+  if (!account) {
+    console.error(
+      "Failed to fetch account for appwriteItemId:",
+      appwriteItemId
+    );
+  }
+
 
   return (
     <section className="home">
