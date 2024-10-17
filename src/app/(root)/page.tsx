@@ -5,16 +5,13 @@ import TotalBalanceBox from "@/components/shared/TotalBalanceBox";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import { SearchParamProps } from "@/types";
-import { redirect } from "next/navigation";
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
-
   const loggedIn = await getLoggedInUser();
-
-  if (!loggedIn) redirect("/sign-in");
-
-  const accounts = await getAccounts({ userId: loggedIn.$id });
+  const accounts = await getAccounts({
+    userId: loggedIn.$id,
+  });
 
   if (!accounts) return;
 
@@ -23,14 +20,6 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
   const account = await getAccount({ appwriteItemId });
 
-  if (!account) {
-    console.error(
-      "Failed to fetch account for appwriteItemId:",
-      appwriteItemId
-    );
-  }
-
-
   return (
     <section className="home">
       <div className="home-content">
@@ -38,13 +27,8 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           <Header
             type="greeting"
             title="Welcome"
-            user={
-              loggedIn?.firstName
-                ? loggedIn.firstName.charAt(0).toUpperCase() +
-                  loggedIn.firstName.slice(1).toLowerCase()
-                : ""
-            }
-            subtext="Access & manage your account and transactions efficiently."
+            user={loggedIn?.firstName || "Guest"}
+            subtext="Access and manage your account and transactions efficiently."
           />
 
           <TotalBalanceBox
@@ -54,7 +38,6 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           />
         </header>
 
-        {/* RECENT TRANSACTIONS */}
         <RecentTransactions
           accounts={accountsData}
           transactions={account?.transactions}
@@ -65,7 +48,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
       <RightSidebar
         user={loggedIn}
-        transactions={accounts.transactions}
+        transactions={account?.transactions}
         banks={accountsData?.slice(0, 2)}
       />
     </section>
