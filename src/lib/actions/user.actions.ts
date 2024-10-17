@@ -126,7 +126,7 @@ export async function getLoggedInUser() {
 
     const result = await account.get();
 
-    const user = await getUserInfo({userId: result.$id})
+    const user = await getUserInfo({ userId: result.$id });
 
     return parseStringify(user);
   } catch (error) {

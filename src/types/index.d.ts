@@ -251,3 +251,15 @@ export interface CreateTransactionProps {
 export interface getTransactionsByBankIdProps {
   bankId: string;
 }
+
+export interface CategoryBadgeProps {
+  category: string;
+}
+
+export type Category = "Food and Drink" | "Travel" | "Transfer";
+
+export interface CategoryCount {
+  name: string;
+  count: number;
+  totalCount: number;
+}
