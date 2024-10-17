@@ -161,6 +161,10 @@
     @apply flex flex-1 items-center justify-between gap-2 overflow-hidden;
   }
 
+  .transactions {
+    @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-25 p-8 xl:py-12;
+  }
+
   /* Auth Form */
   .auth-form {
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
