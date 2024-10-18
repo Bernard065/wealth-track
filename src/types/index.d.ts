@@ -263,3 +263,8 @@ export interface CategoryCount {
   count: number;
   totalCount: number;
 }
+
+export interface PaginationProps {
+  page: number;
+  totalPages: number;
+}

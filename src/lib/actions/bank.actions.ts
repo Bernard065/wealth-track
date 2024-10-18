@@ -70,10 +70,21 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     // get bank from db
     const bank = await getBank({ documentId: appwriteItemId });
 
+    if (!bank) {
+      console.error(`Bank with appwriteItemId ${appwriteItemId} not found`);
+      return;
+    }
+
     // get account info from plaid
     const accountsResponse = await plaidClient.accountsGet({
       access_token: bank.accessToken,
     });
+
+    if (!accountsResponse || !accountsResponse.data.accounts[0]) {
+      console.error("No accounts found from Plaid for this access token");
+      return;
+    }
+
     const accountData = accountsResponse.data.accounts[0];
 
     // get transfer transactions from appwrite
@@ -148,6 +159,7 @@ export const getInstitution = async ({
 };
 
 // Get transactions
+// Get transactions
 export const getTransactions = async ({
   accessToken,
 }: getTransactionsProps) => {
@@ -155,32 +167,44 @@ export const getTransactions = async ({
   let transactions: any = [];
 
   try {
-    // Iterate through each page of new transaction updates for item
+    // Iterate through each page of new transaction updates for the item
     while (hasMore) {
       const response = await plaidClient.transactionsSync({
         access_token: accessToken,
       });
 
+      if (!response || !response.data) {
+        console.error("No response or data from Plaid API.");
+        return []; // Return an empty array to avoid undefined.
+      }
+
       const data = response.data;
 
-      transactions = response.data.added.map((transaction) => ({
-        id: transaction.transaction_id,
-        name: transaction.name,
-        paymentChannel: transaction.payment_channel,
-        type: transaction.payment_channel,
-        accountId: transaction.account_id,
-        amount: transaction.amount,
-        pending: transaction.pending,
-        category: transaction.category ? transaction.category[0] : "",
-        date: transaction.date,
-        image: transaction.logo_url,
-      }));
+      console.log("Plaid transactions response:", data); // Log the full response to check the structure.
+
+      // Append new transactions instead of replacing the transactions array
+      transactions = [
+        ...transactions,
+        ...data.added.map((transaction) => ({
+          id: transaction.transaction_id,
+          name: transaction.name,
+          paymentChannel: transaction.payment_channel,
+          type: transaction.payment_channel,
+          accountId: transaction.account_id,
+          amount: transaction.amount,
+          pending: transaction.pending,
+          category: transaction.category ? transaction.category[0] : "",
+          date: transaction.date,
+          image: transaction.logo_url,
+        })),
+      ];
 
       hasMore = data.has_more;
     }
 
-    return parseStringify(transactions);
+    return transactions; // Return transactions array.
   } catch (error) {
-    console.error("An error occurred while getting the accounts:", error);
+    console.error("An error occurred while getting the transactions:", error);
+    return []; // Return an empty array to avoid undefined.
   }
 };
