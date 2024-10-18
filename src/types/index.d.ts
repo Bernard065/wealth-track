@@ -268,3 +268,7 @@ export interface PaginationProps {
   page: number;
   totalPages: number;
 }
+
+export interface PaymentTransferFormProps {
+  accounts: Account[];
+}

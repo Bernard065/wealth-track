@@ -321,4 +321,9 @@
   .my-banks {
     @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-25 p-8 xl:py-12;
   }
+
+  /* Payment Transfer */
+  .payment-transfer {
+    @apply no-scrollbar flex flex-col overflow-y-scroll bg-gray-25 p-8 md:max-h-screen xl:py-12;
+  }
 }
