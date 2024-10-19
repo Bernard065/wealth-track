@@ -1,3 +1,5 @@
+"use client";
+
 import { PaginationProps } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
