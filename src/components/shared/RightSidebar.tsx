@@ -59,10 +59,6 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
           </div>
         )}
       </section>
-
-      <section>
-        <div></div>
-      </section>
     </aside>
   );
 };

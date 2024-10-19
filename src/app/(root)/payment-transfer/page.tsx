@@ -21,8 +21,17 @@ const Page = async () => {
         subtext="Please provide any specific details or notes related to the payment transfer"
       />
 
-      <section className="size-full pt-5">
-        <PaymentTransferForm accounts={accountsData} />
+      <section className="size-full pt-10">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-18 font-semibold">Transfer Details</h2>
+          <p className="text-14 font-normal ">
+            Enter the details of the recipient
+          </p>
+        </div>
+
+        <div className="pt-5">
+          <PaymentTransferForm accounts={accountsData} />
+        </div>
       </section>
     </section>
   );

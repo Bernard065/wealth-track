@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -102,7 +107,7 @@
   }
 
   .home-content {
-    @apply no-scrollbar flex w-full flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-scroll;
+    @apply no-scrollbar flex w-full flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
   }
 
   .home-header {
@@ -325,5 +330,25 @@
   /* Payment Transfer */
   .payment-transfer {
     @apply no-scrollbar flex flex-col overflow-y-scroll bg-gray-25 p-8 md:max-h-screen xl:py-12;
+  }
+
+  .payment-transfer_form-item {
+    @apply flex w-full max-w-[850px] flex-col gap-3 md:flex-row lg:gap-8;
+  }
+
+  .payment-transfer_form-content {
+    @apply flex w-full max-w-[280px] flex-col gap-2;
+  }
+
+  .payment-transfer_form-details {
+    @apply flex flex-col gap-1 border-t border-gray-200 pb-5 pt-6;
+  }
+
+  .payment-transfer_btn-box {
+    @apply mt-5 flex w-full max-w-[850px] gap-3 border-gray-200 py-5;
+  }
+
+  .payment-transfer_btn {
+    @apply text-14 w-full bg-bank-gradient font-semibold text-white shadow-form !important;
   }
 }

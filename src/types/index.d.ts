@@ -1,3 +1,5 @@
+import { UseFormSetValue } from "react-hook-form";
+
 export interface HeaderProps {
   type?: "title" | "greeting";
   title: string;
@@ -271,4 +273,14 @@ export interface PaginationProps {
 
 export interface PaymentTransferFormProps {
   accounts: Account[];
+}
+
+export interface BankDropdownProps {
+  accounts: Account[];
+  setValue?: UseFormSetValue<any>;
+  otherStyles?: string;
+}
+
+export interface getBankByAccountIdProps {
+  accountId: string;
 }
