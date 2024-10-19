@@ -44,7 +44,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           <TableHead className="px-2">Amount</TableHead>
           <TableHead className="px-2">Status</TableHead>
           <TableHead className="px-2">Date</TableHead>
-          <TableHead className="px-2 max-md:hidden">Channel</TableHead>
+
           <TableHead className="px-2 max-md:hidden">Category</TableHead>
         </TableRow>
       </TableHeader>
@@ -88,9 +88,9 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 {formatDateTime(new Date(transaction.date)).dateTime}
               </TableCell>
 
-              <TableCell className="min-w-24 pl-2 pr-10 capitalize">
+              {/* <TableCell className="min-w-24 pl-2 pr-10 capitalize">
                 {transaction.paymentChannel}
-              </TableCell>
+              </TableCell> */}
 
               <TableCell className="pl-2 pr-10 max-md:hidden">
                 <CategoryBadge category={transaction.category} />
