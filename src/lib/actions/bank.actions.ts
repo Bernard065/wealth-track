@@ -180,8 +180,6 @@ export const getTransactions = async ({
 
       const data = response.data;
 
-      console.log("Plaid transactions response:", data); // Log the full response to check the structure.
-
       // Append new transactions instead of replacing the transactions array
       transactions = [
         ...transactions,
